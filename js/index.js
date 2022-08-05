@@ -59,6 +59,7 @@ function addStickyHeader() {
     header.classList.toggle('sticky', window.scrollY > 0);
 }
 
+
 let navScrollHidderSet = false;
 
 const iconMenu = document.querySelector('.menu__icon');
