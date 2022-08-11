@@ -7,18 +7,14 @@ if (iconMenu) {
     console.log(menu.backgroundColor);
     iconMenu.addEventListener('click', function(event) {
         toggleBurgerInteractionClasses();
-        hideBurgerScrollHider(navScrollHidderSet);
+        if (navScrollHidderSet) {
+            menu.style.setProperty('--nav-mobile', 'none');
+            navScrollHidderSet = false;
+        } else {
+            menu.style.setProperty('--nav-mobile', '#131316');
+            navScrollHidderSet = true;
+        }
     });
-}
-
-function hideBurgerScrollHider(navScrollHidderSet) {
-    if (navScrollHidderSet) {
-        menu.style.setProperty('--nav-mobile', 'none');
-        navScrollHidderSet = false;
-    } else {
-        menu.style.setProperty('--nav-mobile', '#131316');
-        navScrollHidderSet = true;
-    }
 }
 
 function toggleBurgerInteractionClasses() {
