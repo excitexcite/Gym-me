@@ -1,3 +1,32 @@
+let navScrollHidderSet = false;
+
+const iconMenu = document.querySelector('.menu__icon');
+const menu = document.querySelector('.header__nav-wrapper');
+
+if (iconMenu) {
+    console.log(menu.backgroundColor);
+    iconMenu.addEventListener('click', function(event) {
+        toggleBurgerInteractionClasses();
+        hideBurgerScrollHider(navScrollHidderSet);
+    });
+}
+
+function hideBurgerScrollHider(navScrollHidderSet) {
+    if (navScrollHidderSet) {
+        menu.style.setProperty('--nav-mobile', 'none');
+        navScrollHidderSet = false;
+    } else {
+        menu.style.setProperty('--nav-mobile', '#131316');
+        navScrollHidderSet = true;
+    }
+}
+
+function toggleBurgerInteractionClasses() {
+    document.body.classList.toggle('scroll-lock')
+    iconMenu.classList.toggle('menu__icon--active');
+    menu.classList.toggle('header__nav-wrapper--active');
+}
+
 $(document).ready(function() {
   
     var scrollLink = $('.scroll');
@@ -8,8 +37,13 @@ $(document).ready(function() {
       $('body,html').animate({
         scrollTop: $(this.hash).offset().top
       }, 1000 );
+  
+      if (iconMenu.classList.contains('menu__icon--active')) {
+        toggleBurgerInteractionClasses();
+        menu.style.setProperty('--nav-mobile', 'none');
+      }
     });
-    
+
     // Active link switching
     $(window).scroll(function() {
       var scrollbarLocation = $(this).scrollTop();
@@ -19,23 +53,19 @@ $(document).ready(function() {
         var sectionOffset = $(this.hash).offset().top;
         
         if ( sectionOffset <= scrollbarLocation ) {
-          $(this).parent().addClass('active');
-          $(this).parent().siblings().removeClass('active');
+          $(this).parent().addClass('nav__list-item--active');
+          $(this).parent().siblings().removeClass('nav__list-item--active');
         }
-      })
+      });
+
+
     });
 });
  
 const accordion = document.querySelectorAll('.faq__item-header');
-// const accordion = document.querySelectorAll('.faq__item');
-console.log(accordion.length);
-console.log(accordion[0]);
-// console.log(accordion[1]);
 for (let question of accordion) {
     question.addEventListener('click', function() {
-        // this.classList.toggle('active');
         const answer = this.nextElementSibling;
-        // const answer = document.querySelector('.faq__item-answer');
         console.log(answer);
         const icon = this.children[1];
         icon.classList.toggle('faq__item-icon--active');
@@ -50,35 +80,36 @@ for (let question of accordion) {
 
 
 // $(document).ready(addStickyHeader);
-window.addEventListener('load', addStickyHeader);
+// window.addEventListener('load', addStickyHeader);
 
-window.addEventListener('scroll', addStickyHeader);
+// window.addEventListener('scroll', addStickyHeader);
 
-function addStickyHeader() {
-    const header = document.querySelector('.header-nav-background');
-    header.classList.toggle('sticky', window.scrollY > 0);
-}
+// function addStickyHeader() {
+//     const header = document.querySelector('.header-nav-background');
+//     header.classList.toggle('sticky', window.scrollY > 0);
+// }
 
+const headerNavBackground = document.querySelector('.header-nav-background');
+const headerSection = document.querySelector('.header__content');
 
-let navScrollHidderSet = false;
+const headerSectionOptions = {
+    rootMargin: "-500px 0px 0px 0px"
+};
 
-const iconMenu = document.querySelector('.menu__icon');
-if (iconMenu) {
-    const menu = document.querySelector('.nav');
-    console.log(menu.backgroundColor);
-    iconMenu.addEventListener('click', function(event) {
-        document.body.classList.toggle('_lock')
-        iconMenu.classList.toggle('_active');
-        menu.classList.toggle('_active');
-        if (navScrollHidderSet) {
-            menu.style.setProperty('--nav-mobile', 'none');
-            navScrollHidderSet = false;
+const headerSectionObserver = 
+    new IntersectionObserver(function(entries, headerSectionObserver) {
+       entries.forEach(entry => {
+        if (!entry.isIntersecting) {
+            headerNavBackground.classList.add('sticky');
         } else {
-            menu.style.setProperty('--nav-mobile', '#131316');
-            navScrollHidderSet = true;
+            headerNavBackground.classList.remove('sticky');
         }
-    });
-}
+    }); 
+}, headerSectionOptions);
+
+headerSectionObserver.observe(headerSection);
+
+
 
 
 $(document).ready(function(){
