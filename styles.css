@@ -51,8 +51,6 @@ button {
     font-weight: 400;
     font-size: 16px;
     line-height: 18px;
-    /* background-color: none; */
-    color: none;
 }
 .big-header {
     font-weight: 800;
@@ -559,7 +557,6 @@ button {
     opacity: 0.2;
 }
 
-.faq { }
 .faq__inner {
     display: flex;
     flex-flow: column;
@@ -1118,9 +1115,6 @@ button {
     .footer__content {
         flex-flow: column;
         min-height: 502px;
-    }
-    .footer__bg-image-container {
-        
     }
     .footer__bg-image {
         width: 276px;
