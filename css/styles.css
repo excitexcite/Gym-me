@@ -152,10 +152,10 @@ button {
     transform: scale(1.1);
 }
 .slick-arrow.slick-prev {
-    background: url(img/arrow-left-large.svg) 0 0 / 100% no-repeat;
+    background: url(../img/arrow-left-large.svg) 0 0 / 100% no-repeat;
 }
 .slick-arrow.slick-next {
-    background: url(img/arrow-right-large.svg) 0 0 / 100% no-repeat;
+    background: url(../img/arrow-right-large.svg) 0 0 / 100% no-repeat;
 }
 .sticky {
     background: rgba(0, 0, 0, 1);
@@ -311,7 +311,7 @@ button {
     line-height: 18px;
     text-transform: uppercase;
     letter-spacing: 1px;
-    background: url(img/arrow-right-small.svg) center right no-repeat;
+    background: url(../img/arrow-right-small.svg) center right no-repeat;
     transform: translateX(0px);
     transform-origin: left;
     transition: transform 0.2s ease-in;
@@ -453,7 +453,7 @@ button {
 .pricing__tarif-option{
     font-family: 'Open Sans', serif;
     line-height: 26px;
-    background: url(img/list-bullet-black.svg) no-repeat left center;
+    background: url(../img/list-bullet-black.svg) no-repeat left center;
     padding-left: 28.83px;
 }
 .pricing__tarif-option + .pricing__tarif-option{
@@ -474,7 +474,7 @@ button {
     color: var(--neutral500);
 }
 .tarif__option--dark { 
-    background: url(img/list-bullet-white.svg) no-repeat left center;
+    background: url(../img/list-bullet-white.svg) no-repeat left center;
     padding-left: 28.83px;
     color: var(--neutral200)
 }
@@ -591,7 +591,7 @@ button {
     flex: 0 0 20px;
     /* width: 20px; */
     height: 20px;
-    background-image: url(img/arrow-down-small.svg);
+    background-image: url(../img/arrow-down-small.svg);
     transition: transform 400ms;
 }
 .faq__item-icon--active {
